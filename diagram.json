@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-st-nucleo-c031c6",
+      "id": "nucleo",
+      "top": -37.71,
+      "left": -264.45,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd2004",
+      "id": "lcd1",
+      "top": 44.8,
+      "left": 101.6,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 82.8,
+      "left": -437.8,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 186.35,
+      "left": -508.8,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "$serialMonitor:TX", "nucleo:PA3", "", [] ],
+    [ "$serialMonitor:RX", "nucleo:PA2", "", [] ],
+    [ "lcd1:SCL", "nucleo:D8", "green", [ "h-19.2", "v173.1", "h-134.4", "v-105.74" ] ],
+    [ "nucleo:D2", "lcd1:SDA", "orange", [ "v4.94", "h-36.48", "v43.2", "h153.6", "v-192.2" ] ],
+    [ "nucleo:GND.9", "lcd1:GND", "black", [ "h11.52", "v-47.86", "h115.2", "v9.6" ] ],
+    [ "lcd1:VCC", "nucleo:5V.1", "red", [ "h-28.8", "v-134.3", "h-355.2", "v206.4", "h34.13" ] ],
+    [ "led1:C", "nucleo:GND.5", "green", [ "v57.6", "h106" ] ],
+    [ "led1:A", "r1:1", "green", [ "v48", "h-96" ] ],
+    [ "r1:2", "nucleo:PA4", "green", [ "h27.6", "v38.26" ] ]
+  ],
+  "dependencies": {}
+}
